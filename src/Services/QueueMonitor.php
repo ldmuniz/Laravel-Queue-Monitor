@@ -115,7 +115,7 @@ class QueueMonitor
 
         $model = self::getModel();
 
-        $model::query()->create([
+        $model::query()->updateOrCreate(['job_id' => self::getJobId($job)],[
             'job_id' => self::getJobId($job),
             'name' => $job->resolveName(),
             'queue' => $job->getQueue(),
